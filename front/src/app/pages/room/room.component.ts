@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./room.component.scss']
 })
 export class RoomComponent implements OnInit {
-
+  currentStream: any;
+  userArray : Array<any> = [];
   constructor() { }
 
   ngOnInit(): void {
@@ -18,10 +19,14 @@ export class RoomComponent implements OnInit {
       navigator.mediaDevices.getUserMedia({
         audio: false,
         video: true
-      }).then(() => {
-
+      }).then(stream => {
+        this.currentStream = stream;
+        this.addUserVideo(stream);
+        this.addUserVideo(stream);
+        this.addUserVideo(stream);
+        this.addUserVideo(stream);
       }).catch(() => {
-        console.log('Error: ')
+        console.log('Error: media devices permission required.')
       })
     }
     else {
@@ -29,4 +34,7 @@ export class RoomComponent implements OnInit {
     }
   }
 
+  addUserVideo = (stream: any) => {
+    this.userArray.push(stream);
+  }
 }

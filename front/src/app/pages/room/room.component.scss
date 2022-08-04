@@ -5,3 +5,14 @@
     height: 100vh;
     background-color: black;
 }
+
+.room-wrapper {
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    app-video-player {
+        padding: .25rem;
+    }
+}
